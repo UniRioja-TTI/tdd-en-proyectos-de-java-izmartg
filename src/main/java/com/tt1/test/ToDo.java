@@ -31,4 +31,14 @@ public class ToDo {
 	public void setCompletado(boolean completado) {
 		this.completado = completado;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    
+	    ToDo toDo = (ToDo) o;
+	    
+	    return nombre != null ? nombre.equals(toDo.nombre) : toDo.nombre == null;
+	}
 }

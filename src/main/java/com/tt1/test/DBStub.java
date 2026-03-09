@@ -8,19 +8,41 @@ public class DBStub {
 	
 		// OPERACIONES DE TAREAS
 	public void crearToDo(ToDo tarea) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		if(!contieneToDo(tarea))
+			tareas.add(tarea);
 	}
+	
 	public ToDo devuelveToDo(ToDo tarea) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		String nombre = tarea.getNombre();
+		
+		if(contieneToDo(tarea)){
+			for (ToDo t: tareas) {
+				if(t.getNombre().equals(nombre))
+					return t;
+			}
+		}
+		
+		return null;
 	}
+	
 	public void actualizaToDo(ToDo tarea) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		if(contieneToDo(tarea)) {
+			eliminaToDo(tarea);
+			crearToDo(tarea);
+		}
 	}
+	
 	public void eliminaToDo(ToDo tarea) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		tareas.remove(tarea);
 	}
+	
+	public boolean contieneToDo(ToDo tarea) {
+		return tareas.contains(tarea);
+	}
+	
 		// OPERACIONES DE CORREOS
 	public void crearCorreo(String correo) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		if(!correos.contains(correo))
+			correos.add(correo);
 	}
 }
