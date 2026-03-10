@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RepositorioTest {
+	
+	private IDB db = new DBStub();
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {

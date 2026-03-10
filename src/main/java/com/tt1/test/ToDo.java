@@ -7,6 +7,14 @@ public class ToDo {
 	private String descripcion;
 	private Date fecha_limite;
 	private boolean completado;
+
+	ToDo(String nombre, String descripcion, Date fecha_limite, boolean completado) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.fecha_limite = fecha_limite;
+		this.completado = completado;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

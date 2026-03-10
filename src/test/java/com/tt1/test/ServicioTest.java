@@ -27,7 +27,22 @@ class ServicioTest {
 	}
 
 	@Test
-	void testMain() {
+	void testCrearToDo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testCrearCorreo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testCompletarToDo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testConsultarToDos() {
 		fail("Not yet implemented");
 	}
 

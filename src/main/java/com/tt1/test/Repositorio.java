@@ -1,20 +1,33 @@
 package com.tt1.test;
 
+import java.util.List;
+
 public class Repositorio {
-	DBStub db;
+	private IDB db = new DBStub();
 	
 		// OPERACIONES DE TAREAS
 	public ToDo devuelveToDo(ToDo tarea) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		return db.devuelveToDo(tarea);
 	}
 	public void completarToDo(ToDo tarea) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		tarea.setCompletado(true);
+		db.actualizaToDo(tarea);
 	}
 	public void crearToDo(ToDo tarea) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		db.crearToDo(tarea);
 	}
+	public boolean contieneToDo(ToDo tarea) {
+		return db.contieneToDo(tarea);
+	}
+	public List<ToDo> devolverToDos() {
+		return db.devuelveToDos();
+	}
+	public List<ToDo> devolverCaducados() {
+		return db.devuelveCaducados();
+	}
+	
 		// OPERACIONES DE CORREOS
 	public void crearCorreo (String correo) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		db.crearCorreo(correo);
 	}
 }

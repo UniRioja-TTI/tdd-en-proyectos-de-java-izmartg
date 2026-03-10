@@ -2,6 +2,9 @@ package com.tt1.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -9,26 +12,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class MailerDubTest {
+	private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    IMailer mailer = new MailerStub();
+    
+    @BeforeEach
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
+    @AfterEach
+    public void tearDown() {
+        System.setOut(standardOut);
+    }
+    
+    @Test
+    void testEnviaCorreo() {
+    	mailer.enviaCorreo("ejemplo@ejemplo.com", "Ejemplo");
 
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
-	@Test
-	void testEnviaCorreo() {
-		fail("Not yet implemented");
-	}
-
+        assertEquals("ejemplo@ejemplo.com: Ejemplo", outputStreamCaptor.toString().trim());
+    }
 }

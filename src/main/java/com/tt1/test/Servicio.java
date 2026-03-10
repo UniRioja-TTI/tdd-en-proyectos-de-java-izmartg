@@ -1,20 +1,18 @@
 package com.tt1.test;
 
+import java.util.Scanner;
+
 public class Servicio {
-	public static void main(String[] args) {
-		
-	}
-	
-	private void crearToDo() {
+	public void crearToDo(Servicio servicio) {
 		throw new UnsupportedOperationException("Clase aún no implementada.");
 	}
-	private void crearCorreo() {
+	public void crearCorreo(Servicio servicio) {
 		throw new UnsupportedOperationException("Clase aún no implementada.");
 	}
-	private void completarToDo() {
+	public void completarToDo(Servicio servicio) {
 		throw new UnsupportedOperationException("Clase aún no implementada.");
 	}
-	private void consultarToDos() {
+	public void consultarToDos(Servicio servicio) {
 		throw new UnsupportedOperationException("Clase aún no implementada.");
 	}
 }

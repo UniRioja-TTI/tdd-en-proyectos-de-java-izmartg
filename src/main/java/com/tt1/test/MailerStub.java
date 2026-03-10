@@ -1,7 +1,7 @@
 package com.tt1.test;
 
-public class MailerStub {
+public class MailerStub implements IMailer{
 	public void enviaCorreo(String correo, String mensaje) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
+		System.out.println(correo + ": " + mensaje);
 	}
 }
