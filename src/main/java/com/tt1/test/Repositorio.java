@@ -30,4 +30,7 @@ public class Repositorio {
 	public void crearCorreo (String correo) {
 		db.crearCorreo(correo);
 	}
+	public List<String> devolverCorreos () {
+		return db.devuelveCorreos();
+	}
 }
