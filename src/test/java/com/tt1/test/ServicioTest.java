@@ -14,7 +14,9 @@ import org.junit.jupiter.api.Test;
 class ServicioTest {
 
 	private static IDB db = new DBStub();
-	private static Servicio serv = new Servicio();
+	private static IMailer mailer = new MailerStub();
+	private static Repositorio repo = new Repositorio(db);
+	private static Servicio serv = new Servicio(repo, mailer);
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -73,6 +75,14 @@ class ServicioTest {
 		ToDo ejemplo4 = new ToDo("Ejemplo 4", "Esto es un ejemplo", null, false);
 		serv.crearToDo(ejemplo4);
 		assertFalse(db.contieneToDo(ejemplo4));
+	}
+	
+	@Test
+	void testExisteToDo() {
+		ToDo tarea1 = new ToDo("Implementacion DBStub", null, null, false);
+		ToDo tarea2 = new ToDo("No existo", null, null, false);
+		assertTrue(serv.existeToDo(tarea1));
+		assertFalse(serv.existeToDo(tarea2));
 	}
 
 	@Test

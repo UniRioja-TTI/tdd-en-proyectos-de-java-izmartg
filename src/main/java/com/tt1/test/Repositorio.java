@@ -3,7 +3,11 @@ package com.tt1.test;
 import java.util.List;
 
 public class Repositorio {
-	private IDB db = new DBStub();
+	private IDB db;
+	
+	Repositorio(IDB db){
+		this.db = db;
+	}
 	
 		// OPERACIONES DE TAREAS
 	public ToDo devuelveToDo(ToDo tarea) {

@@ -16,10 +16,10 @@ import org.junit.jupiter.api.Test;
 class RepositorioTest {
 	
 	private static IDB db = new DBStub();
-	private static Repositorio rep = new Repositorio();
+	private static Repositorio rep = new Repositorio(db);
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	@BeforeEach
+	void setUpBeforeClass() throws Exception {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Year.now().getValue()+1, Calendar.MARCH, 20, 16, 0, 0);
 		Date fecha1 = calendar.getTime();
@@ -81,7 +81,7 @@ class RepositorioTest {
 		boolean completado = false;
 		
 		ToDo ejemplo = new ToDo(nombre, descripcion, fecha, completado);
-		rep.completarToDo(ejemplo);
+		rep.crearToDo(ejemplo);
 		ToDo resultado = db.devuelveToDo(ejemplo);
 		
 		assertTrue(resultado.getNombre().equals(nombre));
