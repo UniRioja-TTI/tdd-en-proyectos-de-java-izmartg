@@ -19,19 +19,19 @@ public class App{
 			opcion = Integer.parseInt(sc.nextLine());
 			switch (opcion) {
 			case 1: {
-				servicio.crearToDo(servicio);
+				// servicio.crearToDo();
 				break;
 			}
 			case 2: {
-				servicio.crearCorreo(servicio);
+				// servicio.crearCorreo();
 				break;
 			}
 			case 3: {
-				servicio.completarToDo(servicio);
+				// servicio.completarToDo();
 				break;
 			}
 			case 4: {
-				servicio.consultarToDos(servicio);
+				// servicio.consultarToDos();
 				break;
 			}
 			default:

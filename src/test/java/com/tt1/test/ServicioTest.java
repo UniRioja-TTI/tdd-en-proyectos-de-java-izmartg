@@ -1,15 +1,14 @@
 package com.tt1.test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Year;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ServicioTest {
@@ -78,17 +77,35 @@ class ServicioTest {
 
 	@Test
 	void testCrearCorreo() {
-		fail("Not yet implemented");
+		String correo;
+		
+			// CASO NORMAL
+		correo = "ejemplo@ejemplo.com";
+		serv.crearCorreo(correo);
+		assertTrue(db.contieneCorreo(correo));
+		
+			// Caso cadena vacía
+		correo = "";
+		serv.crearCorreo("");
+		assertFalse(db.contieneCorreo(correo));
+		
+			// Caso null
+		correo = null;
+		serv.crearCorreo(correo);
+		assertFalse(db.contieneCorreo(correo));
 	}
 
 	@Test
 	void testCompletarToDo() {
-		fail("Not yet implemented");
+		ToDo tarea1 = new ToDo("Implementacion DBStub", null, null, false);
+		serv.completarToDo(tarea1);
+		assertTrue(db.devuelveToDo(tarea1).isCompletado());
 	}
 
 	@Test
 	void testConsultarToDos() {
-		fail("Not yet implemented");
+		List<ToDo> toDos = serv.consultarToDos();
+		assertTrue(db.devuelveToDos().equals(toDos));
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.tt1.test;
 
-import java.util.Scanner;
+import java.util.List;
 
 public class Servicio {
 	private static Repositorio repo = new Repositorio();
@@ -8,13 +8,13 @@ public class Servicio {
 	public void crearToDo(ToDo tarea) {
 		throw new UnsupportedOperationException("Clase aún no implementada.");
 	}
-	public void crearCorreo(ToDo tarea) {
+	public void crearCorreo(String correo) {
 		throw new UnsupportedOperationException("Clase aún no implementada.");
 	}
 	public void completarToDo(ToDo tarea) {
 		throw new UnsupportedOperationException("Clase aún no implementada.");
 	}
-	public void consultarToDos(ToDo tarea) {
+	public List<ToDo> consultarToDos() {
 		throw new UnsupportedOperationException("Clase aún no implementada.");
 	}
 }

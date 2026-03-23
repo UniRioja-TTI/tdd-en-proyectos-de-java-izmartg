@@ -8,14 +8,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class DBStubTest {
 	private static IDB db = new DBStub();
 	
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	@BeforeEach
+	void setUpBeforeClass() throws Exception {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Year.now().getValue()+1, Calendar.MARCH, 20, 16, 0, 0);
 		Date fecha1 = calendar.getTime();
