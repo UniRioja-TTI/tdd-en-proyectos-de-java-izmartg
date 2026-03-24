@@ -17,7 +17,7 @@ class ServicioTest {
 	private static IMailer mailer = new MailerStub();
 	private static Repositorio repo = new Repositorio(db);
 	private static Servicio serv = new Servicio(repo, mailer);
-	
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		Calendar calendar = Calendar.getInstance();
@@ -25,7 +25,7 @@ class ServicioTest {
 		Date fecha1 = calendar.getTime();
 		calendar.set(2020, Calendar.MARCH, 20, 16, 0, 0);
 		Date fecha2 = calendar.getTime();
-		
+
 		ToDo tarea1 = new ToDo(
 				"Implementacion DBStub",
 				"Hay que implementar DBStub.",
@@ -44,7 +44,7 @@ class ServicioTest {
 				fecha2,
 				false
 				);
-		
+
 		db.crearToDo(tarea1);
 		db.crearToDo(tarea2);
 		db.crearToDo(tarea3);
@@ -62,7 +62,7 @@ class ServicioTest {
 		ToDo ejemplo1 = new ToDo("Ejemplo1", "Esto es un ejemplo", fecha, false);
 		serv.crearToDo(ejemplo1);
 		assertTrue(db.contieneToDo(ejemplo1));
-		
+
 			// CASO SIN NOMBRE O NULL
 		ToDo ejemplo2 = new ToDo("", "Esto es un ejemplo", fecha, false);
 		ToDo ejemplo3 = new ToDo(null, "Esto es un ejemplo", fecha, false);
@@ -70,13 +70,13 @@ class ServicioTest {
 		serv.crearToDo(ejemplo3);
 		assertFalse(db.contieneToDo(ejemplo2));
 		assertFalse(db.contieneToDo(ejemplo3));
-			
+
 			// CASO FECHA NULL
 		ToDo ejemplo4 = new ToDo("Ejemplo 4", "Esto es un ejemplo", null, false);
 		serv.crearToDo(ejemplo4);
 		assertFalse(db.contieneToDo(ejemplo4));
 	}
-	
+
 	@Test
 	void testExisteToDo() {
 		ToDo tarea1 = new ToDo("Implementacion DBStub", null, null, false);
@@ -88,22 +88,28 @@ class ServicioTest {
 	@Test
 	void testCrearCorreo() {
 		String correo;
-		
+
 			// CASO NORMAL
 		correo = "ejemplo@ejemplo.com";
 		serv.crearCorreo(correo);
 		assertTrue(db.contieneCorreo(correo));
-		
+
 			// Caso cadena vacía
 		correo = "";
 		serv.crearCorreo("");
 		assertFalse(db.contieneCorreo(correo));
-		
+
 			// Caso null
 		correo = null;
 		serv.crearCorreo(correo);
 		assertFalse(db.contieneCorreo(correo));
 	}
+
+    @Test
+    void testExisteCorreo() {
+        assertTrue(serv.existeCorreo("prueba@prueba.com"));
+        assertFalse(serv.existeCorreo("noestoy@noestoy.com"));
+    }
 
 	@Test
 	void testCompletarToDo() {

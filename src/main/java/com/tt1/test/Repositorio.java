@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Repositorio {
 	private IDB db;
-	
+
 	Repositorio(IDB db){
 		this.db = db;
 	}
-	
+
 		// OPERACIONES DE TAREAS
 	public ToDo devuelveToDo(ToDo tarea) {
 		return db.devuelveToDo(tarea);
@@ -29,12 +29,15 @@ public class Repositorio {
 	public List<ToDo> devolverCaducados() {
 		return db.devuelveCaducados();
 	}
-	
+
 		// OPERACIONES DE CORREOS
 	public void crearCorreo (String correo) {
 		db.crearCorreo(correo);
 	}
-	public List<String> devolverCorreos () {
+    public boolean contieneCorreo(String correo) {
+        return db.contieneCorreo(correo);
+    }
+    public List<String> devolverCorreos () {
 		return db.devuelveCorreos();
 	}
 }

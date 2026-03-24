@@ -14,7 +14,7 @@ public class ToDo {
 		this.fecha_limite = fecha_limite;
 		this.completado = completado;
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -39,14 +39,24 @@ public class ToDo {
 	public void setCompletado(boolean completado) {
 		this.completado = completado;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 	    if (o == null || getClass() != o.getClass()) return false;
-	    
+
 	    ToDo toDo = (ToDo) o;
-	    
+
 	    return nombre != null ? nombre.equals(toDo.nombre) : toDo.nombre == null;
 	}
+
+    @Override
+    public String toString() {
+        return "ToDo{" +
+            "nombre='" + nombre + '\'' +
+            ", descripcion='" + descripcion + '\'' +
+            ", fecha_limite=" + fecha_limite +
+            ", completado=" + completado +
+            '}';
+    }
 }
