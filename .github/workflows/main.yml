@@ -1,0 +1,35 @@
+name: Generar y Publicar Javadoc
+
+on:
+  push:
+    branches:
+      - stable  # Solo se ejecuta cuando subes cambios a stable
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Generar Javadoc
+        run: |
+          mkdir docs
+          javadoc -d docs -sourcepath src/main/java -subpackages com.tt1.test -author -version
+
+      - name: Subir a GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs  # Carpeta donde se generó el HTML
