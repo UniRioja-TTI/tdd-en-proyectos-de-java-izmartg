@@ -6,7 +6,7 @@ on:
       - stable  # Solo se ejecuta cuando subes cambios a stable
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
