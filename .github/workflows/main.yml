@@ -28,6 +28,13 @@ jobs:
           mkdir -p docs
           javadoc -d docs -sourcepath src/main/java -subpackages com.tt1.test
 
+      - name: Commit de los cambios en stable
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "docs: actualizar javadoc en stable" && git push origin stable)
+
       - name: Subir a GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
