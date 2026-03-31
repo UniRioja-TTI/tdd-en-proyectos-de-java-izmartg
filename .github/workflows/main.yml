@@ -25,7 +25,7 @@ jobs:
 
       - name: Generar Javadoc
         run: |
-          mkdir docs
+          mkdir -p docs
           javadoc -d docs -sourcepath src/main/java -subpackages com.tt1.test -author -version
 
       - name: Subir a GitHub Pages
